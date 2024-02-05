@@ -4,7 +4,13 @@ namespace UtmBuilder.Core
 {
     public class Utm(Url url, Campaign campaign)
     {
-        public Url Url { get; set; } = url;
-        public Campaign Campaign { get; set; } = campaign;
+        /// <summary>
+        /// URL (Website link)
+        /// </summary>
+        public Url Url { get; } = url;
+        /// <summary>
+        /// Campaing details
+        /// </summary>
+        public Campaign Campaign { get; } = campaign;
     }
 }
