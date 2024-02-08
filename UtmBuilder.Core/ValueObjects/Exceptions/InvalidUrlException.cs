@@ -7,16 +7,16 @@ namespace UtmBuilder.Core.ValueObjects.Exceptions
     public partial class InvalidUrlException(string message) : Exception(message)
     {
         private const string DefaultErrorMessage = "Invalid URL";
-        private const string UrlRegex = @"^(https?|ftp)://[^\s/$.?#].[^\s]*$";
-        [GeneratedRegex(UrlRegex)]
-        private static partial Regex Urlregex();
+
+        [GeneratedRegex(@"^(https?|ftp)://[^\s/$.?#].[^\s]*$")]
+        private static partial Regex UrlRegex();
 
         public static void ThrowIfInvalidUrl(string url, string message = DefaultErrorMessage)
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new InvalidUrlException(message);
 
-            if (!Urlregex().IsMatch(url))
+            if (!UrlRegex().IsMatch(url))
                 throw new InvalidUrlException(message);
         }
         
